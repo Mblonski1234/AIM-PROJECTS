@@ -35,7 +35,9 @@ const TILES = [
   { q: "Road Show", title: "Road Shows & Videos", desc: "Recorded presentations.", icon: "syllabus" },
 ];
 
-const CATEGORIES = ["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
+// Top-level sections of the AIM hub. Everything currently lives under
+// AIM Pitches; add more entries here as new AIM content is added.
+const CATEGORIES = [{ label: "AIM Pitches", q: "years" }];
 
 async function api(path, opts) {
   return fetch(path, {
@@ -93,7 +95,7 @@ function buildChips() {
   for (const cat of CATEGORIES) {
     const b = document.createElement("button");
     b.className = "chip";
-    b.textContent = cat;
+    b.textContent = cat.label;
     b.addEventListener("click", () => {
       if (activeChip === b) {
         activeChip.classList.remove("active");
@@ -103,7 +105,7 @@ function buildChips() {
         document.querySelectorAll(".chip").forEach((c) => c.classList.remove("active"));
         b.classList.add("active");
         activeChip = b;
-        el("q").value = cat;
+        el("q").value = cat.q;
       }
       runSearch();
     });
