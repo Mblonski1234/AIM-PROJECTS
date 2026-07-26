@@ -371,6 +371,85 @@ button:hover::before {
   display: none;
 }
 
+/* ---------- TAB BAR ---------- */
+.tabs {
+  display: flex;
+  gap: 4px;
+  padding: 0 22px;
+  background: var(--mu-blue-900);
+  overflow-x: auto;
+}
+.tab {
+  background: none;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  border-bottom: 3px solid transparent;
+  border-radius: 0;
+  padding: 14px 18px;
+  font-weight: 700;
+  font-size: 15px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s, border-color 0.15s;
+}
+.tab::before {
+  display: none;
+}
+.tab:hover {
+  color: #fff;
+  filter: none;
+}
+.tab.active {
+  color: var(--mu-gold);
+  border-bottom-color: var(--mu-gold);
+}
+
+/* Home welcome hero (no search art) */
+.hero--home {
+  padding: 70px 22px 84px;
+  text-align: center;
+}
+
+/* ---------- Section header + placeholder ---------- */
+.section-head {
+  max-width: 940px;
+  margin: 34px auto 0;
+  padding: 0 24px;
+}
+.section-head h1 {
+  margin: 0;
+  font-size: 30px;
+  color: var(--mu-blue);
+}
+.section-head p {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-size: 16px;
+}
+.placeholder {
+  max-width: 720px;
+  margin: 24px auto 60px;
+  padding: 48px 32px;
+  text-align: center;
+  background: var(--panel);
+  border: 2px dashed var(--border);
+  border-radius: 18px;
+}
+.placeholder-icon {
+  font-size: 44px;
+  margin-bottom: 8px;
+}
+.placeholder h2 {
+  margin: 6px 0;
+  color: var(--mu-blue);
+  font-size: 22px;
+}
+.placeholder p {
+  margin: 0 auto;
+  max-width: 480px;
+  color: var(--muted);
+}
+
 /* ---------- HERO ---------- */
 .hero {
   position: relative;

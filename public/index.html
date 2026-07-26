@@ -22,7 +22,6 @@
 
       <form id="login-form" class="card">
         <div class="avatar-wrap">
-          <!-- Drop the welcome photo at public/img/welcome.jpg -->
           <img
             id="welcome-photo"
             class="avatar"
@@ -37,7 +36,7 @@
           <span class="lockup-sub">Applied Investment Management</span>
         </div>
         <h1>Welcome to the Program Portal</h1>
-        <p class="muted">Enter the access password to browse AIM materials.</p>
+        <p class="muted">Enter the access password to continue.</p>
         <input
           id="password"
           type="password"
@@ -57,7 +56,7 @@
         <div class="lockup lockup--sm">
           <span class="lockup-mark">AIM</span>
           <span class="lockup-bar"></span>
-          <span class="lockup-sub">Program Portal</span>
+          <span class="lockup-sub">Class Portal</span>
         </div>
         <nav class="topnav">
           <span class="pill-tag">Marquette University</span>
@@ -65,80 +64,127 @@
         </nav>
       </header>
 
-      <!-- HERO with search -->
-      <section class="hero">
-        <div class="hero-art" aria-hidden="true">
-          <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice">
-            <defs>
-              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0" stop-color="#013a7a" />
-                <stop offset="1" stop-color="#001b3a" />
-              </linearGradient>
-              <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stop-color="#FFCB05" />
-                <stop offset="1" stop-color="#ffd84d" />
-              </linearGradient>
-            </defs>
-            <rect width="1200" height="320" fill="url(#sky)" />
-            <polyline
-              class="perf-line"
-              points="0,250 150,240 300,210 450,220 600,170 750,150 900,110 1050,80 1200,40"
-              fill="none"
-              stroke="url(#gold)"
-              stroke-width="4"
-            />
-            <g fill="#00224a" opacity="0.85">
-              <rect x="60" y="200" width="70" height="120" />
-              <rect x="150" y="160" width="60" height="160" />
-              <rect x="230" y="220" width="80" height="100" />
-              <rect x="330" y="140" width="55" height="180" />
-              <rect x="410" y="190" width="90" height="130" />
-              <rect x="520" y="120" width="60" height="200" />
-              <rect x="600" y="200" width="70" height="120" />
-              <rect x="690" y="150" width="80" height="170" />
-              <rect x="790" y="180" width="60" height="140" />
-              <rect x="870" y="110" width="65" height="210" />
-              <rect x="955" y="185" width="85" height="135" />
-              <rect x="1060" y="150" width="70" height="170" />
-            </g>
-            <polygon points="550,120 565,70 580,120" fill="#FFCB05" opacity="0.9" />
-          </svg>
-        </div>
+      <!-- TAB BAR -->
+      <nav class="tabs" id="tabs"></nav>
 
-        <div class="hero-inner">
-          <h1 class="hero-title anim-up">Your central hub for all things AIM.</h1>
-          <p class="hero-sub anim-up delay-1">
-            Start with the pitch library — ten years of equity write-ups,
-            valuations, presentations, and road shows, all searchable in one place.
-          </p>
-          <div class="searchwrap anim-up delay-2">
-            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
-              <path
-                d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-              />
-            </svg>
-            <input
-              id="q"
-              type="search"
-              placeholder="Search a ticker, company, or year — “TJX”, “valuation”, “2024”…"
-              autocomplete="off"
-            />
+      <!-- ============ HOME (Welcome) ============ -->
+      <section id="view-home" class="view">
+        <section class="hero hero--home">
+          <div class="hero-inner">
+            <h1 class="hero-title anim-up">Welcome to AIM</h1>
+            <p class="hero-sub anim-up delay-1">
+              Applied Investment Management at Marquette University — your class
+              hub for pitches, internships, assignments, and more.
+            </p>
           </div>
+        </section>
+        <div class="home" id="home-sections"></div>
+      </section>
+
+      <!-- ============ PITCHES (library) ============ -->
+      <section id="view-pitches" class="view hidden">
+        <section class="hero">
+          <div class="hero-art" aria-hidden="true">
+            <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice">
+              <defs>
+                <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stop-color="#013a7a" />
+                  <stop offset="1" stop-color="#001b3a" />
+                </linearGradient>
+                <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+                  <stop offset="0" stop-color="#FFCB05" />
+                  <stop offset="1" stop-color="#ffd84d" />
+                </linearGradient>
+              </defs>
+              <rect width="1200" height="320" fill="url(#sky)" />
+              <polyline
+                class="perf-line"
+                points="0,250 150,240 300,210 450,220 600,170 750,150 900,110 1050,80 1200,40"
+                fill="none"
+                stroke="url(#gold)"
+                stroke-width="4"
+              />
+              <g fill="#00224a" opacity="0.85">
+                <rect x="60" y="200" width="70" height="120" />
+                <rect x="150" y="160" width="60" height="160" />
+                <rect x="230" y="220" width="80" height="100" />
+                <rect x="330" y="140" width="55" height="180" />
+                <rect x="410" y="190" width="90" height="130" />
+                <rect x="520" y="120" width="60" height="200" />
+                <rect x="600" y="200" width="70" height="120" />
+                <rect x="690" y="150" width="80" height="170" />
+                <rect x="790" y="180" width="60" height="140" />
+                <rect x="870" y="110" width="65" height="210" />
+                <rect x="955" y="185" width="85" height="135" />
+                <rect x="1060" y="150" width="70" height="170" />
+              </g>
+              <polygon points="550,120 565,70 580,120" fill="#FFCB05" opacity="0.9" />
+            </svg>
+          </div>
+          <div class="hero-inner">
+            <h1 class="hero-title anim-up">The AIM Pitch Library</h1>
+            <p class="hero-sub anim-up delay-1">
+              676 equity write-ups, valuations, presentations, and road shows —
+              2016 to 2025, searchable in one place.
+            </p>
+            <div class="searchwrap anim-up delay-2">
+              <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+              <input
+                id="q"
+                type="search"
+                placeholder="Search a ticker, company, or year — “TJX”, “valuation”, “2024”…"
+                autocomplete="off"
+              />
+            </div>
+          </div>
+        </section>
+
+        <div class="chips" id="chips"></div>
+        <section id="home" class="home"></section>
+        <p id="status" class="status muted"></p>
+        <ul id="results" class="results"></ul>
+      </section>
+
+      <!-- ============ INTERNSHIPS ============ -->
+      <section id="view-internships" class="view hidden">
+        <div class="section-head">
+          <h1>Internships</h1>
+          <p>Postings, application guides, and resources for AIM students.</p>
+        </div>
+        <div class="placeholder">
+          <div class="placeholder-icon">💼</div>
+          <h2>This section is ready for content</h2>
+          <p>
+            Add internship postings, résumé and interview resources, past
+            placements, and application deadlines here. Just let me know what you
+            want on this tab and I'll build it.
+          </p>
         </div>
       </section>
 
-      <!-- CATEGORY CHIPS -->
-      <div class="chips" id="chips"></div>
-
-      <!-- HOME (empty query) — featured tiles incl. AIM Pitches -->
-      <section id="home" class="home"></section>
-
-      <p id="status" class="status muted"></p>
-      <ul id="results" class="results"></ul>
+      <!-- ============ ASSIGNMENTS ============ -->
+      <section id="view-assignments" class="view hidden">
+        <div class="section-head">
+          <h1>Assignments</h1>
+          <p>Coursework, due dates, and submission guidelines.</p>
+        </div>
+        <div class="placeholder">
+          <div class="placeholder-icon">📝</div>
+          <h2>This section is ready for content</h2>
+          <p>
+            Add assignment briefs, rubrics, templates, and due dates here. Tell
+            me how you want assignments organized and I'll set it up.
+          </p>
+        </div>
+      </section>
 
       <footer class="foot">
         Marquette University · Applied Investment Management Program

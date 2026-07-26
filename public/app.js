@@ -35,9 +35,30 @@ const TILES = [
   { q: "Road Show", title: "Road Shows & Videos", desc: "Recorded presentations.", icon: "syllabus" },
 ];
 
-// Top-level sections of the AIM hub. Everything currently lives under
-// AIM Pitches; add more entries here as new AIM content is added.
-const CATEGORIES = [{ label: "AIM Pitches", q: "years" }];
+// Within the Pitches tab: quick filter chips.
+const CATEGORIES = [{ label: "All Pitches", q: "years" }];
+
+// Top-level tabs of the class site.
+const TABS = [
+  { id: "home", label: "Home" },
+  { id: "pitches", label: "Pitches" },
+  { id: "internships", label: "Internships" },
+  { id: "assignments", label: "Assignments" },
+];
+
+// Cards on the Home (Welcome) page — each opens a tab.
+const HOME_SECTIONS = [
+  {
+    tab: "pitches",
+    title: "Pitch Library",
+    desc: "676 equity write-ups, valuations, presentations & road shows — 2016 to 2025.",
+    icon: "pitch",
+    featured: true,
+    cta: "Open the library →",
+  },
+  { tab: "internships", title: "Internships", desc: "Postings, guides & resources.", icon: "form" },
+  { tab: "assignments", title: "Assignments", desc: "Coursework & due dates.", icon: "syllabus" },
+];
 
 async function api(path, opts) {
   return fetch(path, {
@@ -49,9 +70,55 @@ async function api(path, opts) {
 function showApp() {
   loginView.classList.add("hidden");
   appView.classList.remove("hidden");
+  buildTabs();
   buildChips();
-  el("q").focus();
-  runSearch();
+  renderHomeSections();
+  showTab("home");
+}
+
+// ---------- Tabs ----------
+function showTab(id) {
+  document.querySelectorAll(".view").forEach((v) => v.classList.add("hidden"));
+  const view = el("view-" + id);
+  if (view) view.classList.remove("hidden");
+  document.querySelectorAll(".tab").forEach((t) =>
+    t.classList.toggle("active", t.dataset.tab === id)
+  );
+  window.scrollTo({ top: 0, behavior: "smooth" });
+  if (id === "pitches") {
+    el("q").focus();
+    runSearch();
+  }
+}
+
+function buildTabs() {
+  const wrap = el("tabs");
+  wrap.innerHTML = "";
+  for (const t of TABS) {
+    const b = document.createElement("button");
+    b.className = "tab";
+    b.dataset.tab = t.id;
+    b.textContent = t.label;
+    b.addEventListener("click", () => showTab(t.id));
+    wrap.appendChild(b);
+  }
+}
+
+function renderHomeSections() {
+  const wrap = el("home-sections");
+  wrap.innerHTML = "";
+  HOME_SECTIONS.forEach((s, i) => {
+    const div = document.createElement("div");
+    div.className = "tile" + (s.featured ? " featured" : "");
+    div.style.animationDelay = `${i * 0.07}s`;
+    div.innerHTML = `
+      <div class="tile-icon">${ICONS[s.icon]}</div>
+      <h3>${s.title}</h3>
+      <p>${s.desc}</p>
+      ${s.cta ? `<span class="tile-cta">${s.cta}</span>` : ""}`;
+    div.addEventListener("click", () => showTab(s.tab));
+    wrap.appendChild(div);
+  });
 }
 function showLogin() {
   appView.classList.add("hidden");
