@@ -14,14 +14,29 @@
   <body>
     <!-- ===================== LOGIN GATE ===================== -->
     <section id="login" class="gate hidden">
-      <div class="gate-hero" aria-hidden="true"></div>
+      <div class="gate-hero" aria-hidden="true">
+        <span class="orb orb-1"></span>
+        <span class="orb orb-2"></span>
+        <span class="orb orb-3"></span>
+      </div>
+
       <form id="login-form" class="card">
+        <div class="avatar-wrap">
+          <!-- Drop the welcome photo at public/img/welcome.jpg -->
+          <img
+            id="welcome-photo"
+            class="avatar"
+            src="/img/welcome.jpg"
+            alt="AIM Program"
+            onerror="this.classList.add('avatar--placeholder'); this.removeAttribute('src');"
+          />
+        </div>
         <div class="lockup">
           <span class="lockup-mark">AIM</span>
           <span class="lockup-bar"></span>
           <span class="lockup-sub">Applied Investment Management</span>
         </div>
-        <h1>Program Portal</h1>
+        <h1>Welcome to the Program Portal</h1>
         <p class="muted">Enter the access password to browse AIM materials.</p>
         <input
           id="password"
@@ -30,7 +45,7 @@
           autocomplete="current-password"
           required
         />
-        <button type="submit">Enter Portal</button>
+        <button type="submit"><span>Enter Portal</span></button>
         <p id="login-error" class="error hidden"></p>
         <p class="fineprint">Marquette University</p>
       </form>
@@ -65,15 +80,13 @@
               </linearGradient>
             </defs>
             <rect width="1200" height="320" fill="url(#sky)" />
-            <!-- rising performance line -->
             <polyline
+              class="perf-line"
               points="0,250 150,240 300,210 450,220 600,170 750,150 900,110 1050,80 1200,40"
               fill="none"
               stroke="url(#gold)"
               stroke-width="4"
-              opacity="0.9"
             />
-            <!-- skyline silhouette -->
             <g fill="#00224a" opacity="0.85">
               <rect x="60" y="200" width="70" height="120" />
               <rect x="150" y="160" width="60" height="160" />
@@ -88,18 +101,17 @@
               <rect x="955" y="185" width="85" height="135" />
               <rect x="1060" y="150" width="70" height="170" />
             </g>
-            <!-- steeple accent -->
             <polygon points="550,120 565,70 580,120" fill="#FFCB05" opacity="0.9" />
           </svg>
         </div>
 
         <div class="hero-inner">
-          <h1 class="hero-title">Find any AIM resource in seconds.</h1>
-          <p class="hero-sub">
-            Ten years of handbooks, forms, syllabi, and program materials —
+          <h1 class="hero-title anim-up">Find any AIM resource in seconds.</h1>
+          <p class="hero-sub anim-up delay-1">
+            Ten years of pitches, handbooks, forms, and program materials —
             searchable in one place.
           </p>
-          <div class="searchwrap">
+          <div class="searchwrap anim-up delay-2">
             <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
               <path
                 d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"
@@ -112,7 +124,7 @@
             <input
               id="q"
               type="search"
-              placeholder="Search materials — try “handbook”, “internship form”, “syllabus”…"
+              placeholder="Search — try “Apple pitch”, “handbook”, “valuation model”…"
               autocomplete="off"
             />
           </div>
@@ -121,6 +133,9 @@
 
       <!-- CATEGORY CHIPS -->
       <div class="chips" id="chips"></div>
+
+      <!-- HOME (empty query) — featured tiles incl. AIM Pitches -->
+      <section id="home" class="home"></section>
 
       <p id="status" class="status muted"></p>
       <ul id="results" class="results"></ul>

@@ -1,5 +1,33 @@
 [
   {
+    "key": "pitches/AAPL-Apple-Buy-Pitch-2025.pptx",
+    "path": "pitches/AAPL-Apple-Buy-Pitch-2025.pptx",
+    "title": "AAPL Apple Buy Pitch 2025.pptx",
+    "folder": "pitches",
+    "tags": ["pitches", "equity", "technology"]
+  },
+  {
+    "key": "pitches/MSFT-Microsoft-Pitch.pptx",
+    "path": "pitches/MSFT-Microsoft-Pitch.pptx",
+    "title": "MSFT Microsoft Pitch.pptx",
+    "folder": "pitches",
+    "tags": ["pitches", "equity", "technology"]
+  },
+  {
+    "key": "pitches/NVDA-Nvidia-Thesis.docx",
+    "path": "pitches/NVDA-Nvidia-Thesis.docx",
+    "title": "NVDA Nvidia Investment Thesis.docx",
+    "folder": "pitches",
+    "tags": ["pitches", "equity", "semiconductors"]
+  },
+  {
+    "key": "pitches/JPM-Valuation-Model.xlsx",
+    "path": "pitches/JPM-Valuation-Model.xlsx",
+    "title": "JPM Valuation Model.xlsx",
+    "folder": "pitches",
+    "tags": ["pitches", "valuation", "financials"]
+  },
+  {
     "key": "handbooks/AIM-Student-Handbook-2025.pdf",
     "path": "handbooks/AIM-Student-Handbook-2025.pdf",
     "title": "AIM Student Handbook 2025.pdf",
