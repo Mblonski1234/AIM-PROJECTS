@@ -1,0 +1,19 @@
+{
+  "name": "aim-portal",
+  "version": "1.0.0",
+  "description": "Searchable, password-gated portal for AIM program materials",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "index": "node scripts/build-index.js"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.600.0",
+    "@aws-sdk/s3-request-presigner": "^3.600.0",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2"
+  }
+}

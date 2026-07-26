@@ -1,0 +1,37 @@
+[
+  {
+    "key": "handbooks/AIM-Student-Handbook-2025.pdf",
+    "path": "handbooks/AIM-Student-Handbook-2025.pdf",
+    "title": "AIM Student Handbook 2025.pdf",
+    "folder": "handbooks",
+    "tags": ["handbooks", "policy", "students"]
+  },
+  {
+    "key": "handbooks/AIM-Program-Overview.pdf",
+    "path": "handbooks/AIM-Program-Overview.pdf",
+    "title": "AIM Program Overview.pdf",
+    "folder": "handbooks",
+    "tags": ["handbooks", "overview"]
+  },
+  {
+    "key": "forms/Internship-Agreement-Form.pdf",
+    "path": "forms/Internship-Agreement-Form.pdf",
+    "title": "Internship Agreement Form.pdf",
+    "folder": "forms",
+    "tags": ["forms", "internship"]
+  },
+  {
+    "key": "forms/Course-Registration-Form.pdf",
+    "path": "forms/Course-Registration-Form.pdf",
+    "title": "Course Registration Form.pdf",
+    "folder": "forms",
+    "tags": ["forms", "registration"]
+  },
+  {
+    "key": "syllabi/AIM-3100-Investments-Syllabus.pdf",
+    "path": "syllabi/AIM-3100-Investments-Syllabus.pdf",
+    "title": "AIM 3100 Investments Syllabus.pdf",
+    "folder": "syllabi",
+    "tags": ["syllabi", "courses", "investments"]
+  }
+]

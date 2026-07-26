@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AIM Program Portal · Marquette University</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;600;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- ===================== LOGIN GATE ===================== -->
+    <section id="login" class="gate hidden">
+      <div class="gate-hero" aria-hidden="true"></div>
+      <form id="login-form" class="card">
+        <div class="lockup">
+          <span class="lockup-mark">AIM</span>
+          <span class="lockup-bar"></span>
+          <span class="lockup-sub">Applied Investment Management</span>
+        </div>
+        <h1>Program Portal</h1>
+        <p class="muted">Enter the access password to browse AIM materials.</p>
+        <input
+          id="password"
+          type="password"
+          placeholder="Access password"
+          autocomplete="current-password"
+          required
+        />
+        <button type="submit">Enter Portal</button>
+        <p id="login-error" class="error hidden"></p>
+        <p class="fineprint">Marquette University</p>
+      </form>
+    </section>
+
+    <!-- ===================== APP ===================== -->
+    <main id="app" class="hidden">
+      <header class="topbar">
+        <div class="lockup lockup--sm">
+          <span class="lockup-mark">AIM</span>
+          <span class="lockup-bar"></span>
+          <span class="lockup-sub">Program Portal</span>
+        </div>
+        <nav class="topnav">
+          <span class="pill-tag">Marquette University</span>
+          <button id="logout" class="link">Sign out</button>
+        </nav>
+      </header>
+
+      <!-- HERO with search -->
+      <section class="hero">
+        <div class="hero-art" aria-hidden="true">
+          <svg viewBox="0 0 1200 320" preserveAspectRatio="xMidYMax slice">
+            <defs>
+              <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0" stop-color="#013a7a" />
+                <stop offset="1" stop-color="#001b3a" />
+              </linearGradient>
+              <linearGradient id="gold" x1="0" y1="0" x2="1" y2="0">
+                <stop offset="0" stop-color="#FFCB05" />
+                <stop offset="1" stop-color="#ffd84d" />
+              </linearGradient>
+            </defs>
+            <rect width="1200" height="320" fill="url(#sky)" />
+            <!-- rising performance line -->
+            <polyline
+              points="0,250 150,240 300,210 450,220 600,170 750,150 900,110 1050,80 1200,40"
+              fill="none"
+              stroke="url(#gold)"
+              stroke-width="4"
+              opacity="0.9"
+            />
+            <!-- skyline silhouette -->
+            <g fill="#00224a" opacity="0.85">
+              <rect x="60" y="200" width="70" height="120" />
+              <rect x="150" y="160" width="60" height="160" />
+              <rect x="230" y="220" width="80" height="100" />
+              <rect x="330" y="140" width="55" height="180" />
+              <rect x="410" y="190" width="90" height="130" />
+              <rect x="520" y="120" width="60" height="200" />
+              <rect x="600" y="200" width="70" height="120" />
+              <rect x="690" y="150" width="80" height="170" />
+              <rect x="790" y="180" width="60" height="140" />
+              <rect x="870" y="110" width="65" height="210" />
+              <rect x="955" y="185" width="85" height="135" />
+              <rect x="1060" y="150" width="70" height="170" />
+            </g>
+            <!-- steeple accent -->
+            <polygon points="550,120 565,70 580,120" fill="#FFCB05" opacity="0.9" />
+          </svg>
+        </div>
+
+        <div class="hero-inner">
+          <h1 class="hero-title">Find any AIM resource in seconds.</h1>
+          <p class="hero-sub">
+            Ten years of handbooks, forms, syllabi, and program materials —
+            searchable in one place.
+          </p>
+          <div class="searchwrap">
+            <svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M21 21l-4.3-4.3M11 19a8 8 0 100-16 8 8 0 000 16z"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+              />
+            </svg>
+            <input
+              id="q"
+              type="search"
+              placeholder="Search materials — try “handbook”, “internship form”, “syllabus”…"
+              autocomplete="off"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORY CHIPS -->
+      <div class="chips" id="chips"></div>
+
+      <p id="status" class="status muted"></p>
+      <ul id="results" class="results"></ul>
+
+      <footer class="foot">
+        Marquette University · Applied Investment Management Program
+      </footer>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

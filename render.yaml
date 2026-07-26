@@ -1,0 +1,25 @@
+# Render Blueprint — deploys the AIM Portal as a web service.
+# In Render: New + → Blueprint → connect the GitHub repo → it reads this file.
+services:
+  - type: web
+    name: aim-portal
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    envVars:
+      # Set this to your real shared password in the Render dashboard.
+      - key: SITE_PASSWORD
+        sync: false
+      # A long random string for signing the login cookie. Render can generate it.
+      - key: SESSION_SECRET
+        generateValue: true
+      # ---- Cloudflare R2 (add these once storage is wired up) ----
+      - key: R2_ACCOUNT_ID
+        sync: false
+      - key: R2_ACCESS_KEY_ID
+        sync: false
+      - key: R2_SECRET_ACCESS_KEY
+        sync: false
+      - key: R2_BUCKET
+        sync: false
