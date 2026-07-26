@@ -22,20 +22,20 @@ const ICONS = {
 // Home tiles. First one is the featured AIM Pitches card.
 const TILES = [
   {
-    q: "pitch",
-    title: "AIM Pitches",
-    desc: "Student stock pitches, theses & valuation models — the heart of the program.",
+    q: "years",
+    title: "AIM Pitch Library",
+    desc: "676 equity write-ups, valuations, presentations & road shows — 2016 to 2025.",
     icon: "pitch",
     featured: true,
-    cta: "Browse pitches →",
+    cta: "Browse everything →",
   },
-  { q: "handbook", title: "Handbooks", desc: "Program & student handbooks.", icon: "book" },
-  { q: "form", title: "Forms", desc: "Applications & agreements.", icon: "form" },
-  { q: "syllabus", title: "Syllabi", desc: "Course syllabi by term.", icon: "syllabus" },
-  { q: "investments", title: "Investments", desc: "Coursework & research.", icon: "chart" },
+  { q: "2025", title: "2025", desc: "Latest pitches & security reviews.", icon: "chart" },
+  { q: "2024", title: "2024", desc: "Reviews by sector & ticker.", icon: "chart" },
+  { q: "2023", title: "2023", desc: "Fall '22 & Spring '22 write-ups.", icon: "book" },
+  { q: "Road Show", title: "Road Shows & Videos", desc: "Recorded presentations.", icon: "syllabus" },
 ];
 
-const CATEGORIES = ["Pitches", "Handbooks", "Forms", "Syllabi", "Investments"];
+const CATEGORIES = ["2025", "2024", "2023", "2022", "2021", "2020", "2019", "2018", "2017", "2016"];
 
 async function api(path, opts) {
   return fetch(path, {

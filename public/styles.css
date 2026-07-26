@@ -620,6 +620,13 @@ button:hover::before {
 .result .ext[data-ext="ppt"] {
   background: #ca6f1e;
 }
+.result .ext[data-ext="xls"] {
+  background: #1e8449;
+}
+.result .ext[data-ext="mp4"],
+.result .ext[data-ext="mov"] {
+  background: #6c3483;
+}
 .result .meta {
   min-width: 0;
 }

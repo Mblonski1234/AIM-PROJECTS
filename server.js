@@ -35,11 +35,45 @@ const R2_ENABLED = Boolean(
 );
 
 // --- Search index -----------------------------------------------------------
-// index.json is produced by scripts/build-index.js. Falls back to the sample
-// so the demo runs out of the box.
-function loadIndex() {
-  const primary = path.join(__dirname, "data", "index.json");
+// In R2 mode the catalog lives privately in the bucket (key PORTAL_INDEX_KEY) so
+// filenames — which may contain student names — never touch the public repo.
+// In local/demo mode it falls back to the bundled sample.
+const PORTAL_INDEX_KEY = "portal-index.json";
+
+function r2Client() {
+  const { S3Client } = requireS3();
+  return new S3Client({
+    region: "auto",
+    endpoint: `https://${R2.accountId}.r2.cloudflarestorage.com`,
+    credentials: {
+      accessKeyId: R2.accessKeyId,
+      secretAccessKey: R2.secretAccessKey,
+    },
+  });
+}
+let _s3mod;
+function requireS3() {
+  return _s3mod;
+}
+
+async function loadIndex() {
+  if (R2_ENABLED) {
+    try {
+      const { GetObjectCommand } = _s3mod;
+      const out = await r2Client().send(
+        new GetObjectCommand({ Bucket: R2.bucket, Key: PORTAL_INDEX_KEY })
+      );
+      const text = await out.Body.transformToString();
+      const arr = JSON.parse(text);
+      return arr.filter((d) => d.key !== PORTAL_INDEX_KEY);
+    } catch (err) {
+      console.error("Could not load index from R2:", err.message);
+      return [];
+    }
+  }
+  // local demo
   const sample = path.join(__dirname, "data", "index.sample.json");
+  const primary = path.join(__dirname, "data", "index.json");
   const file = fs.existsSync(primary) ? primary : sample;
   try {
     return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -47,7 +81,7 @@ function loadIndex() {
     return [];
   }
 }
-let INDEX = loadIndex();
+let INDEX = [];
 
 // Lightweight keyword search over title / path / tags. Ranks by how many of the
 // query's words match, with title matches weighted highest.
@@ -69,7 +103,7 @@ function search(query) {
   })
     .filter((r) => r.score > 0)
     .sort((a, b) => b.score - a.score)
-    .slice(0, 100)
+    .slice(0, 500)
     .map((r) => r.doc);
 }
 
@@ -180,8 +214,17 @@ if (!R2_ENABLED) {
 // the data behind them is gated by the API routes above.
 app.use(express.static(path.join(__dirname, "public")));
 
-app.listen(PORT, () => {
-  console.log(`AIM Portal running on http://localhost:${PORT}`);
-  console.log(`Storage mode: ${R2_ENABLED ? "Cloudflare R2" : "local ./files (demo)"}`);
-  console.log(`Indexed documents: ${INDEX.length}`);
-});
+async function start() {
+  if (R2_ENABLED) {
+    _s3mod = await import("@aws-sdk/client-s3");
+  }
+  INDEX = await loadIndex();
+  app.listen(PORT, () => {
+    console.log(`AIM Portal running on http://localhost:${PORT}`);
+    console.log(
+      `Storage mode: ${R2_ENABLED ? "Cloudflare R2" : "local ./files (demo)"}`
+    );
+    console.log(`Indexed documents: ${INDEX.length}`);
+  });
+}
+start();
